@@ -1,0 +1,96 @@
+import java.util.Calendar;
+
+public class Conta_2 {
+    private static int contador = 0;
+    private int identificador;
+    private double saldo;
+    private String titular;
+
+    public Conta_2(String titular) {
+        this.titular = titular;
+        this.saldo = 0.0;
+        this.identificador = ++contador;
+    }
+
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+}
+
+public class TestaConta {
+    public static void main(String[] args) {
+       
+        Conta conta1 = new Conta("João");
+
+        conta1.setSaldo(1000.0);
+
+       
+        System.out.println("Saldo da conta 1: " + conta1.getSaldo());
+
+       
+        System.out.println("Identificador da conta 1: " + conta1.getIdentificador());
+    }
+}
+
+public class Data {
+    private int dia;
+    private int mes;
+    private int ano;
+
+    public Data(int dia, int mes, int ano) {
+        if (dataValida(dia, mes, ano)) {
+            this.dia = dia;
+            this.mes = mes;
+            this.ano = ano;
+        } else {
+            throw new IllegalArgumentException("Data inválida!");
+        }
+    }
+
+    private boolean dataValida(int dia, int mes, int ano) {
+        Calendar calendario = Calendar.getInstance();
+        calendario.setLenient(false);
+        calendario.set(ano, mes - 1, dia);
+        try {
+            calendario.getTime();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+}
+
+public class PessoaFisica {
+    private String cpf;
+
+    public PessoaFisica(String cpf) {
+        if (validaCpf(cpf)) {
+            this.cpf = cpf;
+        } else {
+            throw new IllegalArgumentException("CPF inválido!");
+        }
+    }
+
+    private boolean validaCpf(String cpf) {
+        return valida(cpf);
+    }
+
+    private boolean valida(String cpf) {
+        return true;
+}
