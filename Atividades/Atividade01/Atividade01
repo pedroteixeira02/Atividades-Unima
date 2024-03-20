@@ -1,0 +1,52 @@
+public class TestaConta {
+    public static void main(String[] args) {
+        Conta conta1 = new Conta("Pedro", 12345, "001", 10000.0);
+       
+        System.out.println(conta1.recuperaDadosParaImpressao());
+       
+        conta1.sacar(500);
+        conta1.depositar(200);
+       
+    }
+}
+--------------------------------------------------------------------------------------------------------------
+public class Conta {
+    String titular;
+    int numero;
+    String agencia;
+    double saldo;
+
+    public Conta(String titular, int numero, String agencia, double saldo){
+        this.titular = titular;
+        this.numero = numero;
+        this.agencia = agencia;
+        this.saldo = saldo;
+    }
+
+    public void sacar(double valor){
+        if (valor > 0 && valor <= saldo){
+            saldo -= valor;
+            System.out.println("Saque realizado com sucesso, Novo saldo: " + saldo);
+        } else{
+            System.out.println("Saldo insuficiente para saque");
+        }
+
+    }
+
+    public void depositar(double valor){
+        if (valor > 0 ){
+            saldo += valor;
+            System.out.println("Depósito realizado com sucesso, Novo saldo: " + saldo);
+        } else{
+            System.out.println("Valor inválido para depósito");
+        }
+    }
+   
+    public String recuperaDadosParaImpressao() {
+        return "Informações da Conta:\n" +
+               "Titular: " + titular + "\n" +
+               "Número da conta: " + numero + "\n" +
+               "Agência: " + agencia + "\n" +
+               "Saldo: R$" + saldo + "\n";
+    }
+}
