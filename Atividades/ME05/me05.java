@@ -89,7 +89,7 @@ public class Porco extends Animal implements Pesado, Colorido {
     @Override
     public String toString() {
         return String.format(
-            "\nCor: %s\nPeso: %.2f\nEnlameado? %s",
+    
             obterCor(),
             obterPeso(),
             enlameado() ? "Sim" : "Não"
